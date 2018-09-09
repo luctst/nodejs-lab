@@ -8,7 +8,7 @@ const Yargs = require("yargs");
 /**
  * Own modules
  */
-const Note = require("./notes.js"); // Retrieve the data passed with module.exports in an object Note, and if there is some code outside module.exports launch the code.
+const Note = require("./notes/notes.js"); // Retrieve the data passed with module.exports in an object Note, and if there is some code outside module.exports launch the code.
 
 /**
  * Variables
@@ -21,6 +21,10 @@ const YargsArgv = Yargs.argv;
 /**
  * Execution
  */
+
+ /**
+  * Notes project execution
+  */
 console.log(" argv property in Process object in global node object:", process.argv);
 console.log(`Yargs object:`,YargsArgv);
 switch (Process) {
