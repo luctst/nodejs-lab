@@ -24,21 +24,39 @@ const AddNote = (title, body) => {
     if (!duplicatesNotes) {
         NotesList.push(NewNote);
         Fs.writeFileSync("./data/notes/notes.json", JSON.stringify(NotesList));
+        console.log(`A note with the "${title}" was created`);
     } else {
         console.log("A note with this title already exists");
     }
 };
 
-const ListAllNote = () => {
-    console.log("Get all notes");
+const FetchNotes = () => {
+    try {
+        const NoteData = Fs.readFileSync("./data/notes/notes.json", "UTF-8");
+        const NotesArray = JSON.parse(NoteData);
+        return NotesArray;
+    } catch (error) {
+        
+    }
 };
 
-const ReadNote = (title) => {
-    console.log(`Content of the note with the title '${title}':`);
+const ReadNote = title => {
+    const Notes = FetchNotes();
+    const Note = Notes.filter(el => el.title === title);
+    console.log(Note);
+};
+
+const RemoveNote = title => {
+    const Notes = FetchNotes();
+    let noteRemoved = Notes.filter(el => el.title !== title);
+    let message = noteRemoved ? `Note removed` : `Note not found`;
+    console.log(message);
+    console.log(noteRemoved);
 };
 
 module.exports = {
     AddNote, // ES6 feature when property = name you can write like this.
-    ListAllNote,
+    FetchNotes,
     ReadNote,
-}
+    RemoveNote,
+};

@@ -25,17 +25,21 @@ const YargsArgv = Yargs.argv;
  /**
   * Notes project execution
   */
-console.log(" argv property in Process object in global node object:", process.argv);
-console.log(`Yargs object:`,YargsArgv);
+// console.log("argv property in Process object in global node object:", process.argv);
+// console.log(`Yargs object:`,YargsArgv);
+console.log(`Vous avez lancé la commande: '${Process}'.`);
 switch (Process) {
     case "add":
         Note.AddNote(YargsArgv.title, YargsArgv.body);
         break;
     case "list":
-        Note.ListAllNote();
+        Note.FetchNotes();
         break;
     case "read":
         Note.ReadNote(YargsArgv.title);
+        break;
+    case "delete":
+        Note.RemoveNote(Process);
         break;
     default:
         console.log("Command not recognize");
