@@ -21,6 +21,16 @@ const YargsArgv = Yargs.argv;
 /**
  * Execution
  */
+// console.log(_.isString(false));
+// console.log(`Hello mon nom est ${Name} et j'ai ${Note.age} ans`);
+// console.log(res());
+// console.log(`the result is ${Note.addNumber(2,2)}`); // You can directly call your method of your object because remember module.exports export the data in an object here Note.
+
+// Fs.appendFile("greeting.txt", `Hello ${user.username}`, error => { // function allows to create file
+//     if (error) {
+//         console.log("unable to write in this file there is an error");
+//     }
+// });
 
  /**
   * Notes project execution
@@ -45,13 +55,3 @@ switch (Process) {
         console.log("Command not recognize");
         break;
 }
-// console.log(_.isString(false));
-// console.log(`Hello mon nom est ${Name} et j'ai ${Note.age} ans`);
-// console.log(res());
-// console.log(`the result is ${Note.addNumber(2,2)}`); // You can directly call your method of your object because remember module.exports export the data in an object here Note.
-
-// Fs.appendFile("greeting.txt", `Hello ${user.username}`, error => { // function allows to create file
-//     if (error) {
-//         console.log("unable to write in this file there is an error");
-//     }
-// });
