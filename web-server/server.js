@@ -12,12 +12,13 @@ const port = 3000;
 /**
  * Déclaration
  */
-app.use(Express.static(__dirname+"/html"));
+app.set("view engine", "hbs");
+// app.use(Express.static(__dirname+"/html"));
 
  /**
   * Exécution
   */
-app.all("/", (req, res) => {
+app.all("/index", (req, res) => {
     // res.set({ // Modifie en-tête http, express gére ça automatiquement mais on peut le modifier si on veut
     //     "content-type": "text/html",
     //     "content-length": 125
@@ -31,6 +32,17 @@ app.all("/", (req, res) => {
     //     tab: ["lucas", "tostée"]
     // } );
     res.send();
+});
+
+app.all("/bad", (req, res) => {
+    res.send(404, "Cette page n'existe pas");
+});
+
+app.all("/", (req, res) => {
+    res.render("index.hbs", {
+        pageInfos: "About page",
+        currentYear: `${new Date().getFullYear()} Tostée Lucas.`, 
+    }); // Render method use for render file with template engine.
 });
 
 app.listen(port);
