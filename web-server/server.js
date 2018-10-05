@@ -12,7 +12,6 @@ const port = 3000;
 /**
  * Déclaration
  */
-app.set("view engine", "hbs");
 // app.use(Express.static(__dirname+"/html"));
 
  /**
@@ -41,6 +40,7 @@ app.all("/bad", (req, res) => {
 app.all("/", (req, res) => {
     res.render("index.hbs", {
         pageInfos: "About page",
+        content: "Welcome on my page she's handle with handlebars which is a good template engine.",
         currentYear: `${new Date().getFullYear()} Tostée Lucas.`, 
     }); // Render method use for render file with template engine.
 });
