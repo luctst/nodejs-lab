@@ -8,16 +8,42 @@
 const Express = require("express");
 const app = Express();
 const port = 3000;
+const hbs = require("hbs"); // Template engine
+hbs.registerPartials(__dirname+"/views/components");
 
 /**
  * Déclaration
  */
-// app.use(Express.static(__dirname+"/html"));
+const myLogger = (req, res, next) => {
+    console.log("Je suis une fonction middleware");
+    next();
+};
+
+const getCurrentYear = hbs.registerHelper("currentYear", () => {
+    return `${new Date().getFullYear()}, Tostée Lucas`;
+});
+
+/**
+ * Middleware
+ */
+// app.use(Express.static(__dirname + "/html")); /* Usefull for static file, this will open the ./html/index.html file when you launch your app.*/
+
+// app.use(myLogger); // Keywords use is for call middleware function and happen everytime that a request is done to your app.
 
  /**
   * Exécution
   */
-app.all("/index", (req, res) => {
+app.all("/about", (req, res) => {
+    res.render("about.hbs", {
+        mainTitle: `This is my about page !!`
+    });
+});
+
+app.all("/bad", (req, res) => {
+    res.send(404, "Cette page n'existe pas");
+});
+
+app.all("/home", (req, res) => {
     // res.set({ // Modifie en-tête http, express gére ça automatiquement mais on peut le modifier si on veut
     //     "content-type": "text/html",
     //     "content-length": 125
@@ -30,19 +56,19 @@ app.all("/index", (req, res) => {
     // res.send(200, {
     //     tab: ["lucas", "tostée"]
     // } );
-    res.send();
+    // console.log(res);
+    // res.send(console.log(res));
 });
 
-app.all("/bad", (req, res) => {
-    res.send(404, "Cette page n'existe pas");
-});
-
-app.all("/", (req, res) => {
+app.all("/template", (req, res) => {
     res.render("index.hbs", {
         pageInfos: "About page",
         content: "Welcome on my page she's handle with handlebars which is a good template engine.",
-        currentYear: `${new Date().getFullYear()} Tostée Lucas.`, 
     }); // Render method use for render file with template engine.
+});
+
+app.all("/test", (req, res) => {
+    res.send(`<h1>Directory: ${__dirname}</h1>`);
 });
 
 app.listen(port);
