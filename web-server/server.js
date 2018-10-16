@@ -18,7 +18,6 @@ const getCurrentYear = hbs.registerHelper("currentYear", () => {
     return `${new Date().getFullYear()}, Tostée Lucas`;
 });
 
-
 /**
  * Middleware
  */
