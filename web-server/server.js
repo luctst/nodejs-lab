@@ -9,26 +9,39 @@ const Express = require("express");
 const app = Express();
 const port = 3000;
 const hbs = require("hbs"); // Template engine
-hbs.registerPartials(__dirname+"/views/components");
+hbs.registerPartials(__dirname+"/views/components"); // Allow creation of components
 
 /**
  * Déclaration
+ */
+const getCurrentYear = hbs.registerHelper("currentYear", () => {
+    return `${new Date().getFullYear()}, Tostée Lucas`;
+});
+
+
+/**
+ * Middleware
  */
 const myLogger = (req, res, next) => {
     console.log("Je suis une fonction middleware");
     next();
 };
 
-const getCurrentYear = hbs.registerHelper("currentYear", () => {
-    return `${new Date().getFullYear()}, Tostée Lucas`;
-});
+const getLog = (req, res, next) => {
+    try {
+        let infos = `${new Date()}: ${req.method}, ${req.url}`;
+        console.log(infos);
+        next();
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-/**
- * Middleware
- */
 // app.use(Express.static(__dirname + "/html")); /* Usefull for static file, this will open the ./html/index.html file when you launch your app.*/
 
 // app.use(myLogger); // Keywords use is for call middleware function and happen everytime that a request is done to your app.
+
+app.use(getLog);
 
  /**
   * Exécution
