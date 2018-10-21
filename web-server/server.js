@@ -7,7 +7,7 @@
 */ 
 const Express = require("express");
 const app = Express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Set dynamic PORT define by heroku or default port 300 if not heroku.
 const hbs = require("hbs"); // Template engine
 hbs.registerPartials(__dirname+"/views/components"); // Allow creation of components
 
