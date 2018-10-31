@@ -7,16 +7,16 @@ const Yargv = require("yargs");
 /**
  * Variables
  */
+let localisation = "2487956";
 
  /**
   * Déclaration
   */
- const getApi = async () => {
+ const getApi = async (woeid) => {
      try {
-         let data = await fetch(`https://www.metaweather.com/api/location/2487956/`);
-         const result =  await data.json();
-         console.log(`I'm waiting for an await function`);
-         console.log(result.parent);
+         let data = await fetch(`https://www.metaweather.com/api/location/${woeid}/`);
+         let result = await data.json();
+         return result;
      } catch (error) {
          console.log(error);
      }
@@ -25,4 +25,4 @@ const Yargv = require("yargs");
 /**
  * Execution
  */
-getApi();
+getApi(localisation);
