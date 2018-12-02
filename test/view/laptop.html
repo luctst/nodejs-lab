@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{%productName%}</title>
+    <style>
+        .description > p {
+            text-align: center;
+            font-style: italic;
+            margin: 0 10%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{%productName%}</h1>
+    </header>
+    <section class="carac">
+        <ul>
+            <li>{%cpu%}</li>
+            <li>{%ram%}</li>
+            <li>{%storage%}</li>
+            <li>{%screen%}</li>
+            <li><strong>{%price%}</strong></li>
+        </ul>
+    </section>
+    <hr>
+    <section class="description">
+        <p>{%description%}</p>
+        <p>Retour à l'accueil <a href="http://www.localhost:3000">Cliquez içi</a></p>
+    </section>
+</body>
+</html>
