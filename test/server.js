@@ -39,8 +39,8 @@ http.createServer((req, res) => {
                 res.end();
             });
         });
-    } else if (adr.pathname === "/test") {
-        res.write(`${laptopData}`);
+    } else if (adr.pathname === "/data") {
+        res.write(`${json}`);
         res.end();
     } else if (adr.pathname === "/laptop" && query.id < laptopData.length) {
         fs.readFile(`${__dirname}/view/laptop.html`, { encoding: "utf-8" }, (error, content) => {
@@ -51,11 +51,12 @@ http.createServer((req, res) => {
                 res.end();
             }
         });
-    } else if (/\.*css/.test(adr.pathname)) {
+    } else if (/.*css/.test(adr.pathname)) {
         fs.readFile(`${__dirname}/style.css`, (error, data) => {
             if (error) {
                 throw error;
             } else {
+                res.writeHead(200, {"content-type": "text/css"});
                 res.write(data);
                 res.end();
             }
