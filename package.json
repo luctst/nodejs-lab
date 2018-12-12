@@ -6,7 +6,8 @@
   "scripts": {
     "test": "nodemon test/server.js",
     "start": "node web-server/server.js",
-    "chat": "nodemon chat/server.js"
+    "chat": "nodemon chat/server.js",
+    "weather": "nodemon weather-app/server.js"
   },
   "repository": {
     "type": "git",
