@@ -8,7 +8,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-    <div id="app"></div>
+    <div id="app" class="container">
+        <div class="row">
+            <form action="/" method="post" class="col-sm">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Entrez une ville" name="city">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Get weather">
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
