@@ -11,33 +11,23 @@ const queryString = require("querystring");
  */
 http.createServer((req, res) => {
     let { pathname } = url.parse(req.url);
-
-    if (req.method === "POST") {
-        req.on("data", chunk => {
-            console.log(chunk);
-        });
-    }
+    let body;
+    
     if (pathname === "/") {
-    fs.readFile(`${__dirname}/src/index.html`, (error, data) => {
-        if (error) {
-            throw error;
+        if (req.method === "POST") {
+            req.on('data', chunk => {
+                body += chunk.toString();
+                console.log(queryString.parse(body));
+                res.end(body);
+            });
         } else {
-            res.write(data);
-            res.end();
+            fs.readFile(`${__dirname}/src/index.html`, (error, data) => {
+                error ? console.log(error) : res.end(data);
+            });
         }
-    });
     } else if (pathname === "/app.js") {
         fs.readFile(`${__dirname}/src/app.js`, (error, data) => {
-            if (error) {
-                throw error;
-            } else {
-                res.write(data);
-                res.end();
-            }
+            error ? console.log(error) : res.end(data);
         });
-    } else if (pathname === "/test") {
-        req.on("data", chunk => console.log(`Data is arrived: ${chunk}`));
-        res.write("Test page");
-        res.end();
     }
-}).listen(3000, "127.0.0.1");
+}).listen(3000);

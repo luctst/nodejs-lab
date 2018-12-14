@@ -12,7 +12,7 @@ export default class Form extends React.Component {
             <section className="row">
                 <form action="/" method="POST">
                     <div className="form-group">
-                        <input type="text" className="form-control" placeholder="Enter your city"></input>
+                        <input type="text" className="form-control" placeholder="Enter your city" name="city"></input>
                     </div>
                     <div className="form-group">
                         <input type="submit" className="btn btn-primary" value="get weather"></input>

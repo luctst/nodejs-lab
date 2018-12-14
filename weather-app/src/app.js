@@ -2230,7 +2230,8 @@ function (_React$Component) {
       }, _react.default.createElement("input", {
         type: "text",
         className: "form-control",
-        placeholder: "Enter your city"
+        placeholder: "Enter your city",
+        name: "city"
       })), _react.default.createElement("div", {
         className: "form-group"
       }, _react.default.createElement("input", {
@@ -24171,7 +24172,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59970" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61271" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -24314,4 +24315,3 @@ function hmrAccept(bundle, id) {
   });
 }
 },{}]},{},["../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","app.js"], null)
-//# sourceMappingURL=/app.map

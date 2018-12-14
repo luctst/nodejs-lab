@@ -3,7 +3,7 @@
  */
 import Form from "./view/form";
 import React from "react";
-import { render as _render } from "react-dom";
+import { render } from "react-dom";
 
 /**
  * Variables
@@ -24,4 +24,4 @@ class App extends React.Component {
 /**
  * Exécution
  */
-_render(<App></App>, app);
+render(<App></App>, app);
