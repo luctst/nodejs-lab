@@ -48,7 +48,15 @@ http.createServer((req, res) => {
         }
     } else if (pathname === "/app.js") {
         fs.readFile(`${__dirname}/src/app.js`, (error, data) => {
-            error ? console.log(error) : res.end(data);
+            if (error) throw error;
+            res.write(data);
+            res.end();
+        });
+    } else if (pathname === "/main.css") {
+        fs.readFile(`${__dirname}/src/main.css`, (error, data) => {
+            if (error) throw error;
+            res.write(data);
+            res.end();
         });
     }
 }).listen(3000);
