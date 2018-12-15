@@ -2221,7 +2221,10 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return _react.default.createElement("section", {
-        className: "row"
+        className: "row",
+        style: {
+          margin: "10% 0"
+        }
       }, _react.default.createElement("form", {
         action: "/",
         method: "POST"
@@ -2247,6 +2250,67 @@ function (_React$Component) {
 
 exports.default = Form;
 ;
+},{"react":"../../../node_modules/react/index.js"}],"view/footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Footer = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Import
+ */
+
+/**
+ * Déclaration
+ */
+var Footer = function Footer(props) {
+  return _react.default.createElement("footer", {
+    className: "row"
+  }, _react.default.createElement("div", {
+    className: "col-12"
+  }, _react.default.createElement("p", {
+    className: "small text-center"
+  }, _react.default.createElement("a", {
+    href: props.link,
+    target: "_blank"
+  }, "Lucas Tost\xE9e"))));
+};
+
+exports.Footer = Footer;
+},{"react":"../../../node_modules/react/index.js"}],"view/header.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Header = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Import
+ */
+
+/**
+ * Déclaration
+ */
+var Header = function Header(props) {
+  return _react.default.createElement("header", {
+    className: "row"
+  }, _react.default.createElement("h1", {
+    className: "text-center"
+  }, props.title));
+};
+
+exports.Header = Header;
 },{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/scheduler/cjs/scheduler.development.js":[function(require,module,exports) {
 var global = arguments[3];
 /** @license React v0.11.3
@@ -24086,6 +24150,10 @@ if ("development" === 'production') {
 
 var _form = _interopRequireDefault(require("./view/form"));
 
+var _footer = require("./view/footer");
+
+var _header = require("./view/header");
+
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = require("react-dom");
@@ -24114,6 +24182,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * Variables
  */
 var app = document.querySelector("#app");
+var footerLink = "https://www.github.com/luctst";
+var appStyle = {
+  background: "blue",
+  height: "100vh"
+};
 /**
  * Déclaration
  */
@@ -24132,7 +24205,11 @@ function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement(_form.default, null);
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_header.Header, {
+        title: "Get weather"
+      }), _react.default.createElement(_form.default, null), _react.default.createElement(_footer.Footer, {
+        link: footerLink
+      }));
     }
   }]);
 
@@ -24145,7 +24222,7 @@ function (_React$Component) {
  */
 
 (0, _reactDom.render)(_react.default.createElement(App, null), app);
-},{"./view/form":"view/form.js","react":"../../../node_modules/react/index.js","react-dom":"../../../node_modules/react-dom/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./view/form":"view/form.js","./view/footer":"view/footer.js","./view/header":"view/header.js","react":"../../../node_modules/react/index.js","react-dom":"../../../node_modules/react-dom/index.js"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -24172,7 +24249,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52400" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51845" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
