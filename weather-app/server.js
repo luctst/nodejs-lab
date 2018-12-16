@@ -16,11 +16,11 @@ const getData = async (query, retrieveData, response) => {
     let data;
     try {
         query = retrieveData;
-        data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&APPID=${apiId}`);
+        data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=${apiId}`);
         let json = await data.json();
         json = JSON.stringify(json);
+        let dataRes = JSON.parse(json);
         response.write(json);
-        response.end();
     } catch (error) {
         throw error;
     }
