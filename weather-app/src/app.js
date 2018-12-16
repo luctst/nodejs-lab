@@ -2195,13 +2195,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
  * Déclaration
@@ -2212,12 +2214,50 @@ function (_React$Component) {
   _inherits(Form, _React$Component);
 
   function Form() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, Form);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Form).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Form)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      showData: false,
+      weatherData: {}
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "displayData", function () {
+      var button = _this.state.showData;
+
+      _this.setState({
+        showData: !button
+      });
+    });
+
+    return _this;
   }
 
   _createClass(Form, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("https://api.openweathermap.org/data/2.5/weather?q=Bordeaux&units=metric&APPID=26e8fc76ea4289676e61e4f91583579d").then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        return _this2.setState({
+          weatherData: data
+        });
+      }).catch(function (error) {
+        return error;
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement("section", {
@@ -2238,10 +2278,17 @@ function (_React$Component) {
       })), _react.default.createElement("div", {
         className: "form-group"
       }, _react.default.createElement("input", {
+        className: "btn btn-warning",
+        value: "Get weather",
+        onClick: this.displayData
+      }), _react.default.createElement("input", {
         type: "submit",
         className: "btn btn-primary",
-        value: "get weather"
-      }))));
+        value: "get more info",
+        style: {
+          marginLeft: "10px"
+        }
+      }))), this.state.showData ? _react.default.createElement("p", null, this.state.weatherData.name) : null);
     }
   }]);
 
@@ -2279,7 +2326,7 @@ var Footer = function Footer(props) {
   }, _react.default.createElement("a", {
     href: props.link,
     target: "_blank"
-  }, "Lucas Tost\xE9e"))));
+  }, "This is me !!"))));
 };
 
 exports.Footer = Footer;
@@ -24249,7 +24296,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51845" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53368" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
