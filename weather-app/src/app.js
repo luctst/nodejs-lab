@@ -2179,7 +2179,7 @@ if ("development" === 'production') {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Form = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -2213,25 +2213,21 @@ var Form =
 function (_React$Component) {
   _inherits(Form, _React$Component);
 
-  function Form() {
-    var _getPrototypeOf2;
-
+  function Form(props) {
     var _this;
 
     _classCallCheck(this, Form);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Form)).call.apply(_getPrototypeOf2, [this].concat(args)));
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      showData: false,
-      weatherData: {}
-    });
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Form).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "displayData", function () {
+      fetch("https://api.openweathermap.org/data/2.5/weather?q=".concat(_this.state.query, "&units=metric&APPID=26e8fc76ea4289676e61e4f91583579d")).then(function (response) {
+        return response.json().then(function (data) {
+          _this.setState({
+            weatherData: data
+          });
+        });
+      });
       var button = _this.state.showData;
 
       _this.setState({
@@ -2239,25 +2235,21 @@ function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getQuery", function (event) {
+      _this.setState({
+        query: event.target.value
+      });
+    });
+
+    _this.state = {
+      query: "",
+      showData: false,
+      weatherData: {}
+    };
     return _this;
   }
 
   _createClass(Form, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      fetch("https://api.openweathermap.org/data/2.5/weather?q=Bordeaux&units=metric&APPID=26e8fc76ea4289676e61e4f91583579d").then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        return _this2.setState({
-          weatherData: data
-        });
-      }).catch(function (error) {
-        return error;
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement("section", {
@@ -2274,7 +2266,8 @@ function (_React$Component) {
         type: "text",
         className: "form-control",
         placeholder: "Enter your city",
-        name: "city"
+        name: "city",
+        onChange: this.getQuery
       })), _react.default.createElement("div", {
         className: "form-group"
       }, _react.default.createElement("input", {
@@ -2288,14 +2281,14 @@ function (_React$Component) {
         style: {
           marginLeft: "10px"
         }
-      }))), this.state.showData ? _react.default.createElement("p", null, this.state.weatherData.name) : null);
+      }))), this.state.showData ? _react.default.createElement("div", null, _react.default.createElement("h3", null, "Weather in ", this.state.weatherData.name, " :")) : null);
     }
   }]);
 
   return Form;
 }(_react.default.Component);
 
-exports.default = Form;
+exports.Form = Form;
 ;
 },{"react":"../../../node_modules/react/index.js"}],"view/footer.js":[function(require,module,exports) {
 "use strict";
@@ -24195,7 +24188,7 @@ if ("development" === 'production') {
 },{"./cjs/react-dom.development.js":"../../../node_modules/react-dom/cjs/react-dom.development.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
-var _form = _interopRequireDefault(require("./view/form"));
+var _form = require("./view/form");
 
 var _footer = require("./view/footer");
 
@@ -24254,7 +24247,7 @@ function (_React$Component) {
     value: function render() {
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_header.Header, {
         title: "Get weather"
-      }), _react.default.createElement(_form.default, null), _react.default.createElement(_footer.Footer, {
+      }), _react.default.createElement(_form.Form, null), _react.default.createElement(_footer.Footer, {
         link: footerLink
       }));
     }
@@ -24296,7 +24289,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53368" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51884" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

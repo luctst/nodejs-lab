@@ -1,7 +1,7 @@
 /**
  * Import
  */
-import Form from "./view/form";
+import { Form } from "./view/form";
 import { Footer } from "./view/footer";
 import { Header } from "./view/header";
 import React from "react";
