@@ -22,18 +22,18 @@ const getData = async (query, retrieveData, response) => {
         query = retrieveData;
         data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=${apiId}`);
         let json = await data.json();
-
         fs.readFile(path.resolve(__dirname, "src", "js", "view", "weather.html"), "utf-8", (error, content) => {
             if (error) throw error;
             dataReplace = content.replace(/\{%city%}/g, json.name);
             dataReplace = dataReplace.replace(/{%date%}/g, day[new Date().getDay() - 1]);
+            dataReplace = dataReplace.replace(/{%day%}/, new Date().getDate());
             dataReplace = dataReplace.replace(/{%temp%}/, json.main.temp);
             dataReplace = dataReplace.replace(/{%tempMax%}/, json.main.temp_max);
             dataReplace = dataReplace.replace(/{%tempMin%}/, json.main.temp_min);
             dataReplace = dataReplace.replace(/{%humidity%}/, json.main.humidity);
             dataReplace = dataReplace.replace(/{%speed%}/, json.wind.speed);
             response.write(dataReplace);
-            response.end();
+            return response.end();
         });
     } catch (error) {
         throw error;
@@ -50,11 +50,7 @@ http.createServer((req, res) => {
     
     if (pathname === "/") {
         if (req.method === "POST") {
-            req.on('data', chunk => {
-                bodyParsed = queryString.parse(chunk.toString());
-            }).on("end", () => {
-                getData(query, bodyParsed.city, res);
-            })
+            res.writeHead(301, { location: path.resolve(__dirname, "/message") });
         } else {
             fs.readFile(path.resolve(__dirname, "src", "index.html"), (error, data) => {
                 error ? console.log(error) : res.end(data);
@@ -70,6 +66,18 @@ http.createServer((req, res) => {
         fs.readFile(path.resolve(__dirname, "src", "main.css"), (error, data) => {
             if (error) throw error;
             res.write(data);
+            res.end();
+        });
+    } else if (pathname === "/message") {
+        req.on('data', chunk => {
+            bodyParsed = queryString.parse(chunk.toString());
+        }).on("end", () => {
+            getData(query, bodyParsed.city, res);
+        });
+    } else {
+        fs.readFile(path.resolve(__dirname, "404.html"), (error, content) => {
+            if (error) throw error;
+            res.write(content);
             res.end();
         });
     }
