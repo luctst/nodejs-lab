@@ -2189,10 +2189,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
@@ -2223,8 +2219,9 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "displayData", function () {
       fetch("https://api.openweathermap.org/data/2.5/weather?q=".concat(_this.state.query, "&units=metric&APPID=26e8fc76ea4289676e61e4f91583579d")).then(function (response) {
         return response.json().then(function (data) {
-          _this.setState({
-            weatherData: data
+          return _this.setState({
+            weatherData: data,
+            mainData: Object.values(data.main)
           });
         });
       });
@@ -2241,39 +2238,29 @@ function (_React$Component) {
       });
     });
 
-    _this.state = {
-      query: "",
-      showData: false,
-      weatherData: {}
-    };
-    return _this;
-  }
-
-  _createClass(Form, [{
-    key: "render",
-    value: function render() {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "render", function () {
       return _react.default.createElement("section", {
         className: "row",
         style: {
-          margin: "10% 0"
+          margin: "5% 0 0"
         }
       }, _react.default.createElement("form", {
-        action: "/",
+        action: "/message",
         method: "POST"
       }, _react.default.createElement("div", {
         className: "form-group"
       }, _react.default.createElement("input", {
         type: "text",
         className: "form-control",
-        placeholder: "Enter your city",
+        placeholder: "Enter your city in english for now",
         name: "city",
-        onChange: this.getQuery
+        onChange: _this.getQuery
       })), _react.default.createElement("div", {
         className: "form-group"
       }, _react.default.createElement("input", {
         className: "btn btn-warning",
         value: "Get weather",
-        onClick: this.displayData
+        onClick: _this.displayData
       }), _react.default.createElement("input", {
         type: "submit",
         className: "btn btn-primary",
@@ -2281,9 +2268,26 @@ function (_React$Component) {
         style: {
           marginLeft: "10px"
         }
-      }))), this.state.showData ? _react.default.createElement("div", null, _react.default.createElement("h3", null, "Weather in ", this.state.weatherData.name, " :")) : null);
-    }
-  }]);
+      }))), _this.state.mainData ? _react.default.createElement("div", null, _react.default.createElement("h3", null, "Weather in ", _this.state.weatherData.name, " :"), _react.default.createElement("ul", {
+        className: "list-group"
+      }, _react.default.createElement("li", {
+        className: "list-group-item"
+      }, "The temperature is about ", _react.default.createElement("strong", null, _this.state.weatherData.main.temp), " degrees."), _react.default.createElement("li", {
+        className: "list-group-item"
+      }, "The max temperature will be ", _react.default.createElement("strong", null, _this.state.weatherData.main.temp_max), " degrees"), _react.default.createElement("li", {
+        className: "list-group-item"
+      }, "The min temperature will be ", _react.default.createElement("strong", null, _this.state.weatherData.main.temp_min), " degrees"), _react.default.createElement("li", {
+        className: "list-group-item"
+      }, "The humidity will be of ", _react.default.createElement("strong", null, _this.state.weatherData.main.humidity), " %"))) : null);
+    });
+
+    _this.state = {
+      query: null,
+      showData: false,
+      weatherData: {}
+    };
+    return _this;
+  }
 
   return Form;
 }(_react.default.Component);
@@ -2315,11 +2319,11 @@ var Footer = function Footer(props) {
   }, _react.default.createElement("div", {
     className: "col-12"
   }, _react.default.createElement("p", {
-    className: "small text-center"
+    className: "small"
   }, _react.default.createElement("a", {
     href: props.link,
     target: "_blank"
-  }, "This is me !!"))));
+  }, "Made by me :)"))));
 };
 
 exports.Footer = Footer;
@@ -24223,10 +24227,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  */
 var app = document.querySelector("#app");
 var footerLink = "https://www.github.com/luctst";
-var appStyle = {
-  background: "blue",
-  height: "100vh"
-};
 /**
  * Déclaration
  */
@@ -24289,7 +24289,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51884" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58502" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

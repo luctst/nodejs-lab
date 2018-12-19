@@ -12,10 +12,6 @@ import { render } from "react-dom";
  */
 const app = document.querySelector("#app");
 const footerLink = "https://www.github.com/luctst";
-const appStyle = {
-    background: "blue",
-    height: "100vh",
-};
 
 /**
  * Déclaration
