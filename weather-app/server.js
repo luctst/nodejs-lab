@@ -9,6 +9,7 @@ const queryString = require("querystring");
 const apiId = `26e8fc76ea4289676e61e4f91583579d`;
 const path = require("path");
 const day = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+const localhost = "127.0.0.1";
 
 
 /**
@@ -81,4 +82,6 @@ http.createServer((req, res) => {
             res.end();
         });
     }
-}).listen(3000);
+}).listen(3000, () => {
+    console.log(`Your app is available on http://${localhost}3000`);
+});
