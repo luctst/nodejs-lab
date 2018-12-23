@@ -2201,9 +2201,11 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var inputQuery = document.querySelector("input[type='text']");
 /**
  * Déclaration
  */
+
 var Form =
 /*#__PURE__*/
 function (_React$Component) {
@@ -2217,19 +2219,22 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Form).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "displayData", function () {
-      fetch("https://api.openweathermap.org/data/2.5/weather?q=".concat(_this.state.query, "&units=metric&APPID=26e8fc76ea4289676e61e4f91583579d")).then(function (response) {
-        return response.json().then(function (data) {
-          return _this.setState({
-            weatherData: data,
-            mainData: Object.values(data.main)
+      if (_this.state.query === null || _this.state.query === "") {
+        alert("Enter a city name to get weather.");
+      } else {
+        var button = _this.state.showData;
+        fetch("https://api.openweathermap.org/data/2.5/weather?q=".concat(_this.state.query, "&units=metric&APPID=26e8fc76ea4289676e61e4f91583579d")).then(function (response) {
+          return response.json().then(function (data) {
+            return _this.setState({
+              weatherData: data
+            });
+          }).then(function () {
+            return _this.setState({
+              showData: !button
+            });
           });
         });
-      });
-      var button = _this.state.showData;
-
-      _this.setState({
-        showData: !button
-      });
+      }
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getQuery", function (event) {
@@ -2268,17 +2273,11 @@ function (_React$Component) {
         style: {
           marginLeft: "10px"
         }
-      }))), _this.state.mainData ? _react.default.createElement("div", null, _react.default.createElement("h3", null, "Weather in ", _this.state.weatherData.name, " :"), _react.default.createElement("ul", {
+      }))), _this.state.showData ? _this.state.weatherData.cod === "404" ? _this.state.showData = false : _react.default.createElement("div", null, _react.default.createElement("h3", null, "Weather in ", _this.state.weatherData.name, " :"), _react.default.createElement("ul", {
         className: "list-group"
       }, _react.default.createElement("li", {
         className: "list-group-item"
-      }, "The temperature is about ", _react.default.createElement("strong", null, _this.state.weatherData.main.temp), " degrees."), _react.default.createElement("li", {
-        className: "list-group-item"
-      }, "The max temperature will be ", _react.default.createElement("strong", null, _this.state.weatherData.main.temp_max), " degrees"), _react.default.createElement("li", {
-        className: "list-group-item"
-      }, "The min temperature will be ", _react.default.createElement("strong", null, _this.state.weatherData.main.temp_min), " degrees"), _react.default.createElement("li", {
-        className: "list-group-item"
-      }, "The humidity will be of ", _react.default.createElement("strong", null, _this.state.weatherData.main.humidity), " %"))) : null);
+      }, "The temperature is about ", _react.default.createElement("strong", null, _this.state.weatherData.main.temp), " degrees."))) : null);
     });
 
     _this.state = {
@@ -2316,14 +2315,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Footer = function Footer(props) {
   return _react.default.createElement("footer", {
     className: "row"
-  }, _react.default.createElement("div", {
-    className: "col-12"
   }, _react.default.createElement("p", {
-    className: "small"
+    className: "small",
+    style: {
+      textAlign: "center"
+    }
   }, _react.default.createElement("a", {
     href: props.link,
     target: "_blank"
-  }, "Made by me :)"))));
+  }, "Made by me :)")));
 };
 
 exports.Footer = Footer;
@@ -24289,7 +24289,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55344" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49286" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
