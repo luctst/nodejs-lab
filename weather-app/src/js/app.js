@@ -19,11 +19,11 @@ const footerLink = "https://www.github.com/luctst";
 class App extends React.Component {
     render() {
         return (
-            <React.Fragment>
+            <>
                 <Header title="Get weather"></Header>
                 <Form></Form>
                 <Footer link={footerLink}></Footer>
-            </React.Fragment>
+            </>
         );
     }
 };
