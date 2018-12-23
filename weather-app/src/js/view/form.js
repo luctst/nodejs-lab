@@ -2,6 +2,7 @@
  * Import
  */
 import React from "react";
+const inputQuery = document.querySelector("input[type='text']");
  
 /**
  * Déclaration
@@ -16,13 +17,15 @@ export class Form extends React.Component {
         }
     }
     displayData = () => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.query}&units=metric&APPID=26e8fc76ea4289676e61e4f91583579d`)
-            .then(response => response.json()
-            .then(data => this.setState({ weatherData: data, mainData: Object.values(data.main)})));
-        let button = this.state.showData;
-        this.setState({
-            showData: !button,
-        });
+        if (this.state.query === null || this.state.query === "") {
+            alert("Enter a city name to get weather.");
+        } else {
+            let button = this.state.showData;
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.query}&units=metric&APPID=26e8fc76ea4289676e61e4f91583579d`)
+                .then(response => response.json()
+                    .then(data => this.setState({ weatherData: data }))
+                    .then(() => this.setState({ showData: !button })))
+        }
     }
     getQuery = event => {
         this.setState({
@@ -42,17 +45,16 @@ export class Form extends React.Component {
                     </div>
                 </form>
                 {
-                    this.state.mainData ?
-                        <div>
-                            <h3>Weather in {this.state.weatherData.name} :</h3>
-                            <ul className="list-group">
-                                <li className="list-group-item">The temperature is about <strong>{this.state.weatherData.main.temp}</strong> degrees.</li>
-                                <li className="list-group-item">The max temperature will be <strong>{this.state.weatherData.main.temp_max}</strong> degrees</li>
-                                <li className="list-group-item">The min temperature will be <strong>{this.state.weatherData.main.temp_min}</strong> degrees</li>
-                                <li className="list-group-item">The humidity will be of <strong>{this.state.weatherData.main.humidity}</strong> %</li>
-                            </ul>
-                        </div>
-                    : null
+                    this.state.showData ?
+                        this.state.weatherData.cod === "404" ?
+                            this.state.showData = false
+                            : <div>
+                                <h3>Weather in {this.state.weatherData.name} :</h3>
+                                <ul className="list-group">
+                                    <li className="list-group-item">The temperature is about <strong>{this.state.weatherData.main.temp}</strong> degrees.</li>
+                                </ul>
+                            </div>
+                        : null
                 }
             </section>
         );
