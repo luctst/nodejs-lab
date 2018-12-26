@@ -10,6 +10,7 @@ const apiId = `26e8fc76ea4289676e61e4f91583579d`;
 const path = require("path");
 const day = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
 const localhost = "127.0.0.1";
+const mustache = require("mustache");
 
 
 /**
@@ -17,23 +18,23 @@ const localhost = "127.0.0.1";
  */
 const getData = async (query, retrieveData, response) => {
     let data;
-    let dataReplace;
-
     try {
         query = retrieveData;
         data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=${apiId}`);
         let json = await data.json();
         fs.readFile(path.resolve(__dirname, "src", "js", "view", "weather.html"), "utf-8", (error, content) => {
             if (error) throw error;
-            dataReplace = content.replace(/\{%city%}/g, json.name);
-            dataReplace = dataReplace.replace(/{%date%}/g, day[new Date().getDay() - 1]);
-            dataReplace = dataReplace.replace(/{%day%}/, new Date().getDate());
-            dataReplace = dataReplace.replace(/{%temp%}/, json.main.temp);
-            dataReplace = dataReplace.replace(/{%tempMax%}/, json.main.temp_max);
-            dataReplace = dataReplace.replace(/{%tempMin%}/, json.main.temp_min);
-            dataReplace = dataReplace.replace(/{%humidity%}/, json.main.humidity);
-            dataReplace = dataReplace.replace(/{%speed%}/, json.wind.speed);
-            response.write(dataReplace);
+            const dataMustache = {
+                city: json.name,
+                date: day[new Date().getDay() - 1],
+                day: new Date().getDate(),
+                temp: json.main.temp,
+                tempMax: json.main.temp_max,
+                tempMin: json.main.temp_min,
+                humidity: json.main.humidity,
+                speed: json.wind.speed
+            };
+            response.write(mustache.render(content, dataMustache));
             return response.end();
         });
     } catch (error) {
@@ -83,5 +84,5 @@ http.createServer((req, res) => {
         });
     }
 }).listen(3000, () => {
-    console.log(`Your app is available on http://${localhost}3000`);
+    console.log(`Your app is available on http://${localhost}:3000`);
 });
