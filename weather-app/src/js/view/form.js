@@ -2,7 +2,6 @@
  * Import
  */
 import React from "react";
-const inputQuery = document.querySelector("input[type='text']");
  
 /**
  * Déclaration
@@ -47,14 +46,17 @@ export class Form extends React.Component {
                 {
                     this.state.showData ?
                         this.state.weatherData.cod === "404" ?
-                            this.state.showData = false
-                            : <div>
-                                <h3>Weather in {this.state.weatherData.name} :</h3>
-                                <ul className="list-group">
-                                    <li className="list-group-item">The temperature is about <strong>{this.state.weatherData.main.temp}</strong> degrees.</li>
-                                </ul>
-                            </div>
-                        : null
+                            (
+                                this.state.showData = false,
+                                alert(`${this.state.query} is not a correct city`)
+                            )
+                        :<div>
+                            <h3>Weather in {this.state.weatherData.name} :</h3>
+                            <ul className="list-group">
+                                <li className="list-group-item">Temperature: <strong>{Math.round(this.state.weatherData.main.temp)}°</strong>deg.</li>
+                            </ul>
+                        </div>
+                    : null
                 }
             </section>
         );
