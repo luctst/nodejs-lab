@@ -4,9 +4,10 @@
   "description": "Some tests with NodeJs",
   "main": "app.js",
   "scripts": {
-    "test": "nodemon weather-app/server.js",
-    "start": "node web-server/server.js",
-    "weather": "nodemon weather-app/server.js | parcel watch weather-app/src/js/app.js -d weather-app/src/ --no-cache --no-source-maps"
+    "weather": "nodemon weather-app/server.js | parcel watch weather-app/src/js/app.js -d weather-app/src/ --no-cache --no-source-maps",
+    "weather-test": "nodemon weather-app/server.js",
+    "jonas-test": "nodemon test/server.js",
+    "notes-app": "nodemon notes/server.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,6 @@
   "devDependencies": {
     "@babel/core": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
-    "lodash": "^4.17.10",
     "node-fetch": "^2.2.0",
     "parcel-bundler": "^1.10.3",
     "react": "^16.6.3",
@@ -31,10 +31,8 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.2.1",
-    "axios": "^0.18.0",
     "express": "^4.16.3",
     "hbs": "^4.0.1",
-    "mustache": "^3.0.1",
-    "socket.io": "^2.2.0"
+    "mustache": "^3.0.1"
   }
 }
