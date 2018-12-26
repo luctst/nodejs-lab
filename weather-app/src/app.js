@@ -2201,11 +2201,9 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var inputQuery = document.querySelector("input[type='text']");
 /**
  * Déclaration
  */
-
 var Form =
 /*#__PURE__*/
 function (_React$Component) {
@@ -2273,11 +2271,11 @@ function (_React$Component) {
         style: {
           marginLeft: "10px"
         }
-      }))), _this.state.showData ? _this.state.weatherData.cod === "404" ? _this.state.showData = false : _react.default.createElement("div", null, _react.default.createElement("h3", null, "Weather in ", _this.state.weatherData.name, " :"), _react.default.createElement("ul", {
+      }))), _this.state.showData ? _this.state.weatherData.cod === "404" ? (_this.state.showData = false, alert("".concat(_this.state.query, " is not a correct city"))) : _react.default.createElement("div", null, _react.default.createElement("h3", null, "Weather in ", _this.state.weatherData.name, " :"), _react.default.createElement("ul", {
         className: "list-group"
       }, _react.default.createElement("li", {
         className: "list-group-item"
-      }, "The temperature is about ", _react.default.createElement("strong", null, _this.state.weatherData.main.temp), " degrees."))) : null);
+      }, "Temperature: ", _react.default.createElement("strong", null, Math.round(_this.state.weatherData.main.temp), "\xB0"), "deg."))) : null);
     });
 
     _this.state = {
@@ -24289,7 +24287,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49286" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61406" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
