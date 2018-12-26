@@ -5,28 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <title>{%city%} Weather !!</title>
+    <title>{{city}} Weather 🌈</title>
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center">{%city%} Weather for {%date%}, {%day%}</h1>
+                <h1 class="text-center">{{city}} Weather for {{date}}, {{day}}</h1>
             </div>
         </div>
         <div class="row">
             <h2>Main informations</h2>
             <ul class="list-group">
-                <li class="list-group-item"><strong>Température:</strong> {%temp%} degrees.</li>
-                <li class="list-group-item"><strong>Temperature max:</strong> {%tempMax%} degrees</li>
-                <li class="list-group-item"><strong>Temperature min:</strong> {%tempMin%} degrees</li>
-                <li class="list-group-item"><strong>Humidity:</strong> {%humidity%} %</li>
+                <li class="list-group-item"><strong>Température:</strong> {{temp}} degrees.</li>
+                <li class="list-group-item"><strong>Temperature max:</strong> {{tempMax}} degrees</li>
+                <li class="list-group-item"><strong>Temperature min:</strong> {{tempMin}} degrees</li>
+                <li class="list-group-item"><strong>Humidity:</strong> {{humidity}} %</li>
             </ul>
         </div>
         <div class="row">
             <h2>Wind</h2>
             <ul class="list-group">
-                <li class="list-group-item"><strong>Wind speed:</strong> {%speed%}</li>
+                <li class="list-group-item"><strong>Wind speed:</strong> {{speed}}</li>
             </ul>
         </div>
         <div class="row">
