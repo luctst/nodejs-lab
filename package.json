@@ -1,12 +1,11 @@
 {
   "name": "node-test",
+  "private": true,
   "version": "1.0.0",
   "description": "Some tests with NodeJs",
   "main": "app.js",
   "scripts": {
-    "weather": "nodemon weather-app/server.js | parcel watch weather-app/src/js/app.js -d weather-app/src/ --no-cache --no-source-maps",
-    "weather-test": "nodemon weather-app/server.js",
-    "jonas-test": "nodemon test/server.js",
+    "simple-app": "nodemon packages/simple-app/server.js",
     "notes-app": "nodemon notes/server.js"
   },
   "repository": {
@@ -21,18 +20,10 @@
   },
   "homepage": "https://github.com/luctst/node-test#readme",
   "devDependencies": {
-    "@babel/core": "^7.2.0",
-    "@babel/preset-react": "^7.0.0",
-    "node-fetch": "^2.2.0",
-    "parcel-bundler": "^1.10.3",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "yargs": "^12.0.2"
-  },
-  "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.2.1",
     "express": "^4.16.3",
     "hbs": "^4.0.1",
-    "mustache": "^3.0.1"
+    "node-fetch": "^2.2.0",
+    "nodemon": "^1.19.0",
+    "yargs": "^12.0.2"
   }
 }
