@@ -1,6 +1,10 @@
 # node-test
 *Be better with nodeJs runtime environment by practicing.*
 
+## How it works ?
+There is two parts in this project:
+* Learning by theory - In a firt time we will learn the core concepts of NodeJs.
+
 ## Projects:
 By default all projects are in the `packages/` folder.
 
