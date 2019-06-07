@@ -10,7 +10,8 @@ const siteConfig = {
   url: 'https://your-docusaurus-test-site.com',
 	baseUrl: '/',
 	customDocsPath: "website/docs",
-  projectName: 'nodejs-lab',
+	projectName: 'nodejs-lab',
+	editUrl: "https://github.com/luctst/nodejs-lab/master/website/docs/",
   headerLinks: [
     {doc: 'test', label: 'Docs'},
     {page: 'help', label: 'Help'},
@@ -32,7 +33,8 @@ const siteConfig = {
   ogImage: 'img/undraw_online.svg',
   twitterImage: 'img/undraw_tweetstorm.svg',
   enableUpdateBy: true,
-  enableUpdateTime: true,
+	enableUpdateTime: true,
+	scrollToTop: true,
   repoUrl: 'https://github.com/luctst/nodejs-lab',
 };
 
