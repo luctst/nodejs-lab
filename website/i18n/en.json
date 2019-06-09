@@ -3,10 +3,10 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "A website for testing",
+    "tagline": "A little documentation to better understand NodeJs",
     "docs": {
-      "test": {
-        "title": "test"
+      "getting-started": {
+        "title": "Qu'est-ce que NodeJs ?"
       }
     },
     "links": {
@@ -14,7 +14,7 @@
       "Help": "Help"
     },
     "categories": {
-      "Test": "Test"
+      "Introduction": "Introduction"
     }
   },
   "pages-strings": {
