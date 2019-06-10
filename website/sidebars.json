@@ -5,6 +5,11 @@
 			"node-Repl",
 			"node-cli"
 		],
+		"Npm": [
+			"npm-intro",
+			"npm-cli",
+			"npm-config"
+		],
 		"Helper": [
 			"helper/callback"
 		]
