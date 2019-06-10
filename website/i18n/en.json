@@ -8,8 +8,11 @@
       "helper/callback": {
         "title": "Fonction callback"
       },
-      "node-repl": {
-        "title": "node-repl"
+      "node-cli": {
+        "title": "NodeJs command line interface"
+      },
+      "node-Repl": {
+        "title": "Node REPL"
       },
       "getting-started": {
         "title": "Qu'est-ce que NodeJs ?"
