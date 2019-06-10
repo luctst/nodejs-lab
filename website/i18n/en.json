@@ -5,6 +5,12 @@
     "previous": "Previous",
     "tagline": "A little documentation to better understand NodeJs",
     "docs": {
+      "helper/callback": {
+        "title": "Fonction callback"
+      },
+      "node-repl": {
+        "title": "node-repl"
+      },
       "getting-started": {
         "title": "Qu'est-ce que NodeJs ?"
       }
@@ -14,7 +20,8 @@
       "Help": "Help"
     },
     "categories": {
-      "Introduction": "Introduction"
+      "Introduction": "Introduction",
+      "Helper": "Helper"
     }
   },
   "pages-strings": {
