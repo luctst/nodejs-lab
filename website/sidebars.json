@@ -2,7 +2,8 @@
   "docs": {
 		"Introduction": [
 			"getting-started",
-			"node-Repl"
+			"node-Repl",
+			"node-cli"
 		],
 		"Helper": [
 			"helper/callback"
