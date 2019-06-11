@@ -5,14 +5,32 @@
     "previous": "Previous",
     "tagline": "A little documentation to better understand NodeJs",
     "docs": {
+      "event-loop": {
+        "title": "NodeJs et l'asynchrone"
+      },
+      "global-object": {
+        "title": "Node global objet"
+      },
       "helper/callback": {
         "title": "Fonction callback"
       },
       "node-cli": {
         "title": "NodeJs command line interface"
       },
+      "node-module": {
+        "title": "Node module"
+      },
       "node-Repl": {
         "title": "Node REPL"
+      },
+      "npm-cli": {
+        "title": "NPM command line interface"
+      },
+      "npm-config": {
+        "title": "Packages.json et package-lock.json"
+      },
+      "npm-intro": {
+        "title": "Qu'est-ce que NPM ?"
       },
       "getting-started": {
         "title": "Qu'est-ce que NodeJs ?"
@@ -24,6 +42,7 @@
     },
     "categories": {
       "Introduction": "Introduction",
+      "Npm": "Npm",
       "Helper": "Helper"
     }
   },
