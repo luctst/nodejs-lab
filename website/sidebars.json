@@ -3,7 +3,10 @@
 		"Introduction": [
 			"getting-started",
 			"node-Repl",
-			"node-cli"
+			"node-cli",
+			"node-module",
+			"global-object",
+			"event-loop"
 		],
 		"Npm": [
 			"npm-intro",
