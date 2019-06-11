@@ -5,6 +5,7 @@
   "description": "Some tests with NodeJs",
   "main": "app.js",
   "scripts": {
+		"test": "node test/testFile.js",
     "simple-app": "nodemon packages/simple-app/server.js",
     "notes-app": "nodemon notes/server.js"
   },
