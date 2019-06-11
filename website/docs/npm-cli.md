@@ -2,7 +2,7 @@
 id: npm-cli
 title: NPM command line interface
 ---
-*Lorsque vous installez NodeJs sur votre machine NPM et son interface de command s'installe également, elle va vous permettre d'interagir avec le service facilement.*
+*Lorsque vous installez NodeJs sur votre machine NPM et son interface de command s'installe également, elle va vous permettre d'interagir avec le service.*
 
 ## Liste de commandes
 Par défaut la ligne de command npm fournit des commandes qui vont vous permettre d'indiquer à npm ce que vous désirez effectuer pour afficher la liste des commandes disponibles rentrez simplement:
