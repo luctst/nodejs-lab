@@ -1,1 +1,2 @@
-console.log(global);
+const http = require("http");
+console.log(http);
