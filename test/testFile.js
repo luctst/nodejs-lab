@@ -1,2 +1,2 @@
-const http = require("http");
-console.log(http);
+const os = require("os");
+console.log(os.networkInterfaces());
