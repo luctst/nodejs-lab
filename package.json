@@ -7,7 +7,8 @@
   "scripts": {
 		"test": "node test/testFile.js",
     "simple-app": "nodemon packages/simple-app/server.js",
-    "notes-app": "nodemon notes/server.js"
+		"notes-app": "nodemon notes/server.js",
+		"task-manager": "node packages/tesk-manager/client.js"
   },
   "repository": {
     "type": "git",

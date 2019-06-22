@@ -5,14 +5,20 @@
     "previous": "Previous",
     "tagline": "A little documentation to better understand NodeJs",
     "docs": {
+      "call-stack": {
+        "title": "Call stack"
+      },
       "event-loop": {
-        "title": "NodeJs et l'asynchrone"
+        "title": "L'event loop"
       },
       "global-object": {
         "title": "Node global objet"
       },
       "helper/callback": {
         "title": "Fonction callback"
+      },
+      "node-architecture": {
+        "title": "Node architecture"
       },
       "node-cli": {
         "title": "NodeJs command line interface"
@@ -42,6 +48,7 @@
     },
     "categories": {
       "Introduction": "Introduction",
+      "Avancée": "Avancée",
       "Npm": "Npm",
       "Helper": "Helper"
     }
