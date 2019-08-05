@@ -23,6 +23,9 @@
       "node-cli": {
         "title": "NodeJs command line interface"
       },
+      "node-debug": {
+        "title": "Debugger votre application"
+      },
       "node-module": {
         "title": "Node module"
       },

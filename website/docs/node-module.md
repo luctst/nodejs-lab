@@ -23,7 +23,7 @@ On a vu que Node englobe notre code dans une fonction lorsqu'il doit exécuter u
 // })()
 ```
 
-Par défaut comme on peut le voir Node nous fournit une liste d'arguments qu'on utilisera assez souvent nous n'allons pas dans ce chapitre décrire l'interêt de chaque arguments, mais nous les évoquerons dans une futur section.
+Par défaut comme on peut le voir Node nous fournit une liste d'arguments qu'on utilisera assez souvent nous n'allons pas dans ce chapitre décrire l'interêt de chaque arguments, mais nous les évoquerons dans une future section.
 
 Vous comprenez maintenant pourquoi vous pouvez utiliser la fonction `require` par exemple qui va chercher le code d'un autre module, il n'y a donc rien de magique vous utilisez juste un argument qui est caché par NodeJs.
 
